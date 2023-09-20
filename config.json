@@ -1,9 +1,0 @@
-{
-    "styleDependency": [
-        "ej2"
-    ],
-    "isShowCase": true,
-    "publishSamples": [
-        "./build/**"
-    ]
-}

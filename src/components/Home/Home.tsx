@@ -1,3 +1,4 @@
+import * as React from 'react'; 
 import { DetailRow, GridComponent, GridModel, Inject, Page } from '@syncfusion/ej2-react-grids';
 import { ChangeEventArgs, SliderComponent, SliderTickRenderedEventArgs } from '@syncfusion/ej2-react-inputs';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
@@ -8,12 +9,10 @@ import { ChartComponent, Legend, LineSeries, SeriesCollectionDirective, SeriesDi
 import { DateTime, Tooltip } from '@syncfusion/ej2-react-charts';
 import { closest, Internationalization } from '@syncfusion/ej2-base';
 import { isNullOrUndefined as isNOU } from '@syncfusion/ej2-base';
-import './index.css';
-import './styles.css';
 import { useEffect, useRef, useState } from 'react';
-
-export default function App() {
-
+import "../../../styles/index.css";
+import "../../../styles/styles.css";
+export const Home = () => {
   const [loanTicks, setLoanTicks] = useState({});
   const [dateValue, setDateValue] = useState(new Date());
   const [interestValue, setInterestValue] = useState(5.5);
@@ -259,7 +258,6 @@ export default function App() {
   }
 
   function onclickEvent(args: any) {
-    debugger;
     let target: any = args.target as Element;
     if (target.classList.contains('e-row-toggle') || target.parentElement.querySelector('.e-row-toggle')) {
       target = target.parentElement.querySelector('.e-row-toggle') ? target.parentElement.querySelector('.e-row-toggle') : target;
@@ -273,7 +271,6 @@ export default function App() {
         (grid.current as any).detailRowModule.expand(parseInt((closest(target, 'tr') as HTMLElement).getAttribute('data-rowindex')!, 10));
       }
     }
-    gridHide();
   }
 
   function pointRender(args: IAccPointRenderEventArgs): void {
@@ -324,16 +321,6 @@ export default function App() {
       textAlign:'Center',
     }
   ]
-
-  function gridHide() {
-    if (width < 439) {
-      let grid: any = document.getElementsByClassName('e-grid');
-      for (let i=0; i < grid.length; i++){
-        grid[i].ej2_instances[0].hideColumns('Payment');
-      }
-    }
-  }
-
   setInitValues();
   calRangeValues();
   child = {
@@ -381,7 +368,6 @@ export default function App() {
       size: '12px',
     }
   }
-
   useEffect(() => {
     setLoanTicks({
       placement: 'After',
@@ -392,12 +378,6 @@ export default function App() {
 
     setInterestTicks({ placement: 'After', largeStep: 5, smallStep: 1, showSmallTicks: false });
   },[]);
-  
-  useEffect(() => {
-    setTimeout(() => {
-      gridHide();
-    }, 100);
-  });
   
   return (
     <div>
