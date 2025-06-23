@@ -264,11 +264,11 @@ export const Home = () => {
       if (target.classList.contains('e-icon-gdownarrow')) {
         target.classList.remove('e-icon-gdownarrow');
         target.classList.add('e-icon-grightarrow');
-        (grid.current as any).detailRowModule.collapse(parseInt((closest(target, 'tr') as HTMLElement).getAttribute('data-rowindex')!, 10));
+        (grid.current as any).detailRowModule.collapse(parseInt((closest(target, 'tr') as HTMLElement).getAttribute('aria-rowindex'), 10)-1);
       } else {
         target.classList.remove('e-icon-grightarrow');
         target.classList.add('e-icon-gdownarrow');
-        (grid.current as any).detailRowModule.expand(parseInt((closest(target, 'tr') as HTMLElement).getAttribute('data-rowindex')!, 10));
+        (grid.current as any).detailRowModule.expand(parseInt((closest(target, 'tr') as HTMLElement).getAttribute('aria-rowindex'), 10)-1);
       }
     }
   }
