@@ -1,4 +1,4 @@
-var glob = require("glob");
+const glob = require("glob");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -12,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         use: "ts-loader",
       },
@@ -23,12 +23,16 @@ module.exports = {
           "css-loader"
         ],
       },
+      { 
+        test: /\.(png|jpg|svg|gif)$/i, 
+        use: ['file-loader'], 
+      }
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
-      favicon: "favicon.ico"
+      template: "./public/index.html", // Updated to point to public folder
+      favicon: "./public/favicon.ico"  // Ensure favicon path matches the public folder
     }),
     new MiniCssExtractPlugin({
       filename: "index.css",
@@ -40,6 +44,7 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
+    clean: true, // Cleans output folder before each build (optional, but good to add)
   },
   optimization: {
     minimize: true,
