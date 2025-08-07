@@ -4,7 +4,7 @@ import { Home } from "../components/Home/Home";
 import { About } from "../components/About/About";
 import { HashRouter, Routes, Route, NavLink } from "react-router-dom";
 
-const root = createRoot(document.getElementById("content-area") as HTMLElement);
+const root = createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <HashRouter>
     <div>  
