@@ -46,6 +46,24 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     clean: true, // Cleans output folder before each build (optional, but good to add)
   },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+      serveIndex: false, // Disable directory browsing to fix URI error
+    },
+    compress: true,
+    port: 8080,
+    open: true,
+    hot: true,
+    historyApiFallback: true,
+    allowedHosts: 'all',
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
+  },
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin({
