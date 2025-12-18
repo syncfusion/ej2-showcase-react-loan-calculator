@@ -611,7 +611,7 @@ export default function App() {
               </div>
               <div>
                 <h6 className="emi-footer">Your Monthly Payment</h6>
-                <h1 id="loan_emi" ref={monPayment}>{emiAmt}</h1>
+                <h2 id="loan_emi" ref={monPayment}>{emiAmt}</h2>
               </div>
             </div>
             <svg height='0px'>
